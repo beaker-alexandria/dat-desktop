@@ -37,7 +37,7 @@ async function daemon (manager) {
 
       switch (command) {
         case 'create':
-          const directory = data[1]
+          const directory = data.splice(1).join(' ')
 
           fs.stat(directory, (err, stat) => {
             if (err) return bus.emit('error', explain(err, 'models/window: fs.stat error on dirname'))
